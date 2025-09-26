@@ -77,22 +77,34 @@ const GrievanceTable = ({ grievances }) => {
             {filteredGrievances.length > 0 ? (
               filteredGrievances.map((grievance) => (
                 <TableRow key={grievance.id} component={Link} to={`/grievance/${grievance.id}`} hover sx={{ textDecoration: 'none' }}>
-                  <TableCell>{grievance.category || 'N/A'}</TableCell>
+                  <TableCell hover>
+ <Link to={`/grievance/${grievance.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+ {grievance.category || 'N/A'}
+ </Link>
+ </TableCell>
                   <TableCell>
-                    {grievance.description 
-                      ? (grievance.description.length > 50 ? grievance.description.substring(0, 50) + '...' : grievance.description)
-                      : 'N/A'}
+ <Link to={`/grievance/${grievance.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+ {grievance.description
+ ? (grievance.description.length > 50 ? grievance.description.substring(0, 50) + '...' : grievance.description)
+ : 'No description'}
+ </Link>
                   </TableCell>
-                  <TableCell>{grievance.status || 'N/A'}</TableCell>
                   <TableCell>
-                    {grievance.submittedAt && grievance.submittedAt.seconds
-                      ? new Date(grievance.submittedAt.seconds * 1000).toLocaleDateString()
-                      : 'N/A'}
+ <Link to={`/grievance/${grievance.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+ {grievance.status || 'N/A'}
+ </Link>
+ </TableCell>
+                  <TableCell>
+ <Link to={`/grievance/${grievance.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+ {grievance.submittedAt && grievance.submittedAt.seconds
+ ? new Date(grievance.submittedAt.seconds * 1000).toLocaleDateString()
+ : 'N/A'}
+ </Link>
                   </TableCell>
                 </TableRow>
               ))
             ) : (
-              <TableRow>
+ <TableRow>
                 <TableCell colSpan={4} align="center">
                   <Typography>No grievances found.</Typography>
                 </TableCell>
